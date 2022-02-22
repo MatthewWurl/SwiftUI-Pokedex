@@ -20,6 +20,7 @@ struct PokemonCell: View {
                     Text(pokemon.name)
                         .font(.subheadline.bold())
                         .foregroundColor(.white)
+                        .lineLimit(1)
                     
                     HStack(spacing: 5) {
                         // 1 or 2 type icons...
@@ -34,6 +35,8 @@ struct PokemonCell: View {
                         }
                     }
                 }
+                
+                Spacer()
                 
                 Image(pokemon.name)
                     .resizable()
