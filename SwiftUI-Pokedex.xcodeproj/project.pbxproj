@@ -13,6 +13,7 @@
 		B8485E4627BF2A3F0065CC5E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8485E4527BF2A3F0065CC5E /* Preview Assets.xcassets */; };
 		B8485E7427C09A430065CC5E /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8485E7327C09A430065CC5E /* PokemonViewModel.swift */; };
 		B8485E7727C09B2F0065CC5E /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8485E7627C09B2F0065CC5E /* Pokemon.swift */; };
+		B896E84E27C35C45000CCF57 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B896E84D27C35C45000CCF57 /* PokemonCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		B8485E4527BF2A3F0065CC5E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B8485E7327C09A430065CC5E /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
 		B8485E7627C09B2F0065CC5E /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		B896E84D27C35C45000CCF57 /* PokemonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				B8485E4027BF2A3D0065CC5E /* PokedexView.swift */,
+				B896E84D27C35C45000CCF57 /* PokemonCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B896E84E27C35C45000CCF57 /* PokemonCell.swift in Sources */,
 				B8485E4127BF2A3D0065CC5E /* PokedexView.swift in Sources */,
 				B8485E7727C09B2F0065CC5E /* Pokemon.swift in Sources */,
 				B8485E3F27BF2A3D0065CC5E /* SwiftUI_PokedexApp.swift in Sources */,

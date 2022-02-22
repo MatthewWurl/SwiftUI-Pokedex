@@ -10,10 +10,20 @@ import SwiftUI
 struct PokedexView: View {
     @StateObject var pokemonViewModel = PokemonViewModel()
     
+    private let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
     var body: some View {
         NavigationView {
-            List(pokemonViewModel.pokemon, id: \.name) { pokemon in
-                Text(pokemon.name)
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    ForEach(pokemonViewModel.pokemon, id: \.name) { pokemon in
+                        PokemonCell()
+                    }
+                }
+                .padding(.horizontal)
             }
             .navigationTitle("Pokédex")
         }
