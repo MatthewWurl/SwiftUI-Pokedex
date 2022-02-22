@@ -20,7 +20,11 @@ struct PokedexView: View {
             ScrollView {
                 LazyVGrid(columns: columns) {
                     ForEach(pokemonViewModel.pokemon, id: \.name) { pokemon in
-                        PokemonCell(pokemon: pokemon)
+                        NavigationLink {
+                            PokemonDetailView()
+                        } label: {
+                            PokemonCell(pokemon: pokemon)
+                        }
                     }
                 }
                 .padding(.horizontal)
