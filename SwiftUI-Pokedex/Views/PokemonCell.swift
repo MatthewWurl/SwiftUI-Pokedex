@@ -8,25 +8,34 @@
 import SwiftUI
 
 struct PokemonCell: View {
+    let pokemon: Pokemon
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(Color("Grass"))
+                .foregroundColor(Color(pokemon.types[0]))
             
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Bulbasaur")
+                    Text(pokemon.name)
                         .font(.subheadline.bold())
                         .foregroundColor(.white)
-                        .minimumScaleFactor(0.75)
                     
                     HStack(spacing: 5) {
-                        Image("GrassIcon").typeIconStyle()
-                        Image("PoisonIcon").typeIconStyle()
+                        // 1 or 2 type icons...
+                        if pokemon.types.count == 1 {
+                            Image("TypeIcon_\(pokemon.types[0])")
+                                .typeIconStyle()
+                        } else {
+                            Image("TypeIcon_\(pokemon.types[0])")
+                                .typeIconStyle()
+                            Image("TypeIcon_\(pokemon.types[1])")
+                                .typeIconStyle()
+                        }
                     }
                 }
                 
-                Image("Bulbasaur")
+                Image(pokemon.name)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 50, height: 50)
@@ -39,7 +48,8 @@ struct PokemonCell: View {
 
 struct PokemonCell_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonCell()
+        PokemonCell(pokemon: Pokemon.samplePokemonArr[0])
+            .frame(width: 160, height: 90)
     }
 }
 

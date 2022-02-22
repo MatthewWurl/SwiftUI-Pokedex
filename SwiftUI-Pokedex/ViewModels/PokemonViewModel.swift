@@ -12,10 +12,6 @@ class PokemonViewModel: ObservableObject {
     
     // Sample data...
     init() {
-        pokemon = [
-            Pokemon(name: "Bulbasaur"),
-            Pokemon(name: "Charmander"),
-            Pokemon(name: "Squirtle")
-        ]
+        pokemon = Pokemon.samplePokemonArr
     }
 }
