@@ -11,14 +11,14 @@ struct PokedexView: View {
     @StateObject var pokemonViewModel = PokemonViewModel()
     
     private let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10)
     ]
     
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: columns) {
+                LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(pokemonViewModel.pokemon, id: \.name) { pokemon in
                         NavigationLink {
                             PokemonDetailView()
@@ -27,7 +27,7 @@ struct PokedexView: View {
                         }
                     }
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 10)
             }
             .navigationTitle("Pokédex")
         }

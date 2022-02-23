@@ -49,6 +49,7 @@ struct PokemonCell: View {
                         .frame(width: 50, height: 50)
                 } placeholder: {
                     ProgressView()
+                        .frame(width: 50, height: 50)
                 }
             }
             .padding(.vertical, 20)
