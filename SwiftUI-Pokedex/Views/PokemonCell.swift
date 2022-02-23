@@ -10,6 +10,10 @@ import SwiftUI
 struct PokemonCell: View {
     let pokemon: Pokemon
     
+    var imageUrl: URL {
+        URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemon.id).png")!
+    }
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
@@ -38,10 +42,14 @@ struct PokemonCell: View {
                 
                 Spacer()
                 
-                Image(pokemon.name)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
+                AsyncImage(url: imageUrl) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50, height: 50)
+                } placeholder: {
+                    ProgressView()
+                }
             }
             .padding(.vertical, 20)
             .padding(.horizontal, 10)
