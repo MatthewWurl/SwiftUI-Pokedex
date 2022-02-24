@@ -7,12 +7,14 @@
 
 import Foundation
 
-struct Pokemon {
+struct Pokemon: Codable, Identifiable {
     let name: String
     let id: Int
     let types: [String]
-    
-    static let samplePokemonArr = [
+}
+
+extension Pokemon {
+    static  let samplePokemonArr = [
         Pokemon(name: "Bulbasaur", id: 1, types: ["Grass", "Poison"]),
         Pokemon(name: "Charmander", id: 4, types: ["Fire"]),
         Pokemon(name: "Squirtle", id: 7, types: ["Water"])
