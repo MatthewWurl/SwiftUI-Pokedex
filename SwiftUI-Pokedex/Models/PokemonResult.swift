@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct PokemonResultResponse: Codable {
+struct PokemonResultResponse: Decodable {
     let results: [PokemonResult]
 }
 
-struct PokemonResult: Codable {
+struct PokemonResult: Decodable {
     let name: String
     let url: String
 }

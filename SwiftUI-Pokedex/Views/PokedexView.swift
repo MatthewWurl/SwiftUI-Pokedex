@@ -12,35 +12,55 @@ struct PokedexView: View {
         service: PokemonService()
     )
     
+    @State private var searchText = ""
+    
     private let columns = [
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10)
     ]
     
+    var isLoading: Bool {
+        pokemonViewModel.pokemonResults.isEmpty
+    }
+    
+    var filteredResults: [PokemonResult] {
+        searchText == "" ? (
+            pokemonViewModel.pokemonResults
+        ) : (
+            pokemonViewModel.pokemonResults.filter { pokemon in
+                let lowercasedName = pokemon.name.lowercased()
+                let lowercasedSearch = searchText.lowercased()
+                
+                return lowercasedName.contains(lowercasedSearch)
+            }
+        )
+    }
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(pokemonViewModel.pokemonResults, id: \.name) { result in
+                    ForEach(filteredResults, id: \.name) { result in
                         NavigationLink {
                             PokemonDetailView()
                         } label: {
-//                            PokemonCell(pokemon: pokemon)
+                            //                            PokemonCell(pokemon: pokemon)
                             Text(result.name)
                         }
                     }
                 }
+                .searchable(text: $searchText)
                 .padding(.horizontal, 10)
             }
             .navigationTitle("Pokédex")
         }
         .overlay {
-            if pokemonViewModel.pokemonResults.isEmpty {
+            if isLoading {
                 LoadingView(text: "Loading Pokémon...")
             }
         }
         .task {
-            await pokemonViewModel.getAllPokemon()
+            await pokemonViewModel.getPokemonResults()
         }
     }
 }

@@ -8,13 +8,14 @@
 import Foundation
 
 protocol PokemonServiceProtocol {
-    func fetchAllPokemon() async throws -> [PokemonResult]
+    func fetchPokemonResults() async throws -> [PokemonResult]
 }
 
 final class PokemonService {
-    func fetchAllPokemon() async throws -> [PokemonResult] {
-        let urlString = APIConstants.baseUrl
-            .appending("/pokemon?limit=\(APIConstants.pokemonLimit)")
+    func fetchPokemonResults() async throws -> [PokemonResult] {
+        let urlString = APIConstants.baseUrl.appending(
+            APIConstants.Paths.pokemonResults
+        )
         
         let url = URL(string: urlString)!
         

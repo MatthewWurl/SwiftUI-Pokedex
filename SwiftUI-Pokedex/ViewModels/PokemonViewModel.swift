@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PokemonViewModelProtocol: ObservableObject {
-    func getAllPokemon() async
+    func getPokemonResults() async
 }
 
 @MainActor
@@ -23,11 +23,11 @@ final class PokemonViewModel: PokemonViewModelProtocol {
         self.service = service
     }
     
-    func getAllPokemon() async {
+    func getPokemonResults() async {
         do {
-            self.pokemonResults = try await service.fetchAllPokemon()
+            self.pokemonResults = try await service.fetchPokemonResults()
         } catch {
-            print("Error getting all Pokemon: \(error)")
+            print("Error getting Pokemon results: \(error)")
         }
     }
 }
