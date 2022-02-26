@@ -28,7 +28,7 @@ struct PokemonCell: View {
                     
                     HStack(spacing: 5) {
                         ForEach(pokemon.types, id: \.type.name) { type in
-                            Image("TypeIcon_\(type.type.name)")
+                            Image("Type_Icon_\(type.type.name)")
                                 .typeIconStyle()
                         }
                     }
