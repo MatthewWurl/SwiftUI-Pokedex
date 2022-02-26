@@ -11,7 +11,7 @@ protocol PokemonServiceProtocol {
     func fetchPokemonResults() async throws -> [Result]
 }
 
-final class PokemonService {
+final class PokemonService: PokemonServiceProtocol {
     func fetchPokemonResults() async throws -> [Result] {
         let urlString = APIConstants.baseUrl.appending(
             APIConstants.Paths.pokemonResults
