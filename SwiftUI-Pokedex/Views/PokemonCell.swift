@@ -12,12 +12,12 @@ struct PokemonCell: View {
     
     var imageUrl: URL {
         URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemon.id).png")!
-    }
+    } 
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(Color(pokemon.types[0]))
+                .foregroundColor(Color(pokemon.types[0].type.name))
             
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
@@ -27,14 +27,8 @@ struct PokemonCell: View {
                         .lineLimit(1)
                     
                     HStack(spacing: 5) {
-                        // 1 or 2 type icons...
-                        if pokemon.types.count == 1 {
-                            Image("TypeIcon_\(pokemon.types[0])")
-                                .typeIconStyle()
-                        } else {
-                            Image("TypeIcon_\(pokemon.types[0])")
-                                .typeIconStyle()
-                            Image("TypeIcon_\(pokemon.types[1])")
+                        ForEach(pokemon.types, id: \.type.name) { type in
+                            Image("TypeIcon_\(type.type.name)")
                                 .typeIconStyle()
                         }
                     }
@@ -60,7 +54,7 @@ struct PokemonCell: View {
 
 struct PokemonCell_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonCell(pokemon: Pokemon.samplePokemonArr[0])
+        PokemonCell(pokemon: Pokemon.samplePokemon)
             .frame(width: 160, height: 90)
     }
 }

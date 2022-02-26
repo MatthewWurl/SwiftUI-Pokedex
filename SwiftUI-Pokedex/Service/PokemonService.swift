@@ -8,11 +8,11 @@
 import Foundation
 
 protocol PokemonServiceProtocol {
-    func fetchPokemonResults() async throws -> [PokemonResult]
+    func fetchPokemonResults() async throws -> [Result]
 }
 
 final class PokemonService {
-    func fetchPokemonResults() async throws -> [PokemonResult] {
+    func fetchPokemonResults() async throws -> [Result] {
         let urlString = APIConstants.baseUrl.appending(
             APIConstants.Paths.pokemonResults
         )
@@ -22,7 +22,7 @@ final class PokemonService {
         let (data, _) = try await URLSession.shared.data(from: url)
         
         let decodedData = try JSONDecoder().decode(
-            PokemonResultResponse.self,
+            PokemonResults.self,
             from: data
         )
         

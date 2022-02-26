@@ -13,7 +13,7 @@ protocol PokemonViewModelProtocol: ObservableObject {
 
 @MainActor
 final class PokemonViewModel: PokemonViewModelProtocol {
-    @Published private(set) var pokemonResults = [PokemonResult]()
+    @Published private(set) var pokemonResults = [Result]()
     
     // 1. Makes the view model more testable
     // 2. Allows a service to be shared across multiple view models

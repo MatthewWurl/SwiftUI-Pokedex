@@ -7,16 +7,26 @@
 
 import Foundation
 
-struct Pokemon: Decodable, Identifiable {
-    let name: String
+struct Pokemon: Codable, Identifiable {
+    let height: Int
     let id: Int
-    let types: [String]
+    let name: String
+    let types: [PokemonType]
+    let weight: Int
+    
+    static let samplePokemon = Pokemon(
+        height: 7,
+        id: 1,
+        name: "Bulbasaur",
+        types: [
+            PokemonType(slot: 1, type: Result(name: "Grass", url: "")),
+            PokemonType(slot: 2, type: Result(name: "Poison", url: ""))
+        ],
+        weight: 69
+    )
 }
 
-extension Pokemon {
-    static  let samplePokemonArr = [
-        Pokemon(name: "Bulbasaur", id: 1, types: ["Grass", "Poison"]),
-        Pokemon(name: "Charmander", id: 4, types: ["Fire"]),
-        Pokemon(name: "Squirtle", id: 7, types: ["Water"])
-    ]
+struct PokemonType: Codable {
+    let slot: Int
+    let type: Result
 }

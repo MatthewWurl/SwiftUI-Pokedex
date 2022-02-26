@@ -23,8 +23,8 @@ struct PokedexView: View {
         pokemonViewModel.pokemonResults.isEmpty
     }
     
-    var filteredResults: [PokemonResult] {
-        searchText == "" ? (
+    var filteredResults: [Result] {
+        searchText.isEmpty ? (
             pokemonViewModel.pokemonResults
         ) : (
             pokemonViewModel.pokemonResults.filter { pokemon in
@@ -44,12 +44,12 @@ struct PokedexView: View {
                         NavigationLink {
                             PokemonDetailView()
                         } label: {
-                            //                            PokemonCell(pokemon: pokemon)
                             Text(result.name)
                         }
                     }
                 }
                 .searchable(text: $searchText)
+                .disableAutocorrection(true)
                 .padding(.horizontal, 10)
             }
             .navigationTitle("Pokédex")
@@ -65,7 +65,7 @@ struct PokedexView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct PokedexView_Previews: PreviewProvider {
     static var previews: some View {
         PokedexView()
     }
