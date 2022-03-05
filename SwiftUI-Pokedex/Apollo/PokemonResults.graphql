@@ -1,0 +1,11 @@
+query PokemonResults($limit: Int) {
+  results: pokemon_v2_pokemon(limit: $limit) {
+    id
+    name
+    types: pokemon_v2_pokemontypes {
+      type: pokemon_v2_type {
+        name
+      }
+    }
+  }
+}

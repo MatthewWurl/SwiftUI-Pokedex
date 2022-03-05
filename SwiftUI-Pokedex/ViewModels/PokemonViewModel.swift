@@ -7,27 +7,27 @@
 
 import Foundation
 
+typealias PokemonResult = PokemonResultsQuery.Data.Result
+
 protocol PokemonViewModelProtocol: ObservableObject {
-    func getPokemonResults() async
+    func fetchPokemonResults()
 }
 
-@MainActor
 final class PokemonViewModel: PokemonViewModelProtocol {
-    @Published private(set) var pokemonResults = [Result]()
+    @Published private(set) var pokemonResults = [PokemonResult]()
     
-    // 1. Makes the view model more testable
-    // 2. Allows a service to be shared across multiple view models
-    private let service: PokemonService
-    
-    init(service: PokemonService) {
-        self.service = service
-    }
-    
-    func getPokemonResults() async {
-        do {
-            self.pokemonResults = try await service.fetchPokemonResults()
-        } catch {
-            print("Error getting Pokemon results: \(error)")
+    func fetchPokemonResults() {
+        Network.shared.apollo.fetch(query: PokemonResultsQuery(limit: APIConstants.pokemonLimit)) { result in
+            switch result {
+            case .success(let graphQLResult):
+                if let results = graphQLResult.data?.results {
+                    DispatchQueue.main.async {
+                        self.pokemonResults = results
+                    }
+                }
+            case .failure(let error):
+                print("Failure! Error: \(error)")
+            }
         }
     }
 }

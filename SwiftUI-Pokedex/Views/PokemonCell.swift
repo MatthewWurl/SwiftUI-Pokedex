@@ -8,27 +8,27 @@
 import SwiftUI
 
 struct PokemonCell: View {
-    let pokemon: Pokemon
+    let result: PokemonResult
     
     var imageUrl: URL {
-        URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemon.id).png")!
-    } 
+        URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(result.id).png")!
+    }
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(Color(pokemon.types[0].type.name))
+                .foregroundColor(Color("\(result.types[0].type!.name.capitalized)"))
             
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(pokemon.name)
+                    Text(result.name.capitalized)
                         .font(.subheadline.bold())
                         .foregroundColor(.white)
                         .lineLimit(1)
                     
                     HStack(spacing: 5) {
-                        ForEach(pokemon.types, id: \.type.name) { type in
-                            Image("Type_Icon_\(type.type.name)")
+                        ForEach(result.types, id: \.type!.name) { type in
+                            Image("Type_Icon_\(type.type!.name.capitalized)")
                                 .typeIconStyle()
                         }
                     }
@@ -52,18 +52,24 @@ struct PokemonCell: View {
     }
 }
 
-struct PokemonCell_Previews: PreviewProvider {
-    static var previews: some View {
-        PokemonCell(pokemon: Pokemon.samplePokemon)
-            .frame(width: 160, height: 90)
-    }
-}
+//struct PokemonCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PokemonCell(result: )
+//            .frame(width: 160, height: 90)
+//    }
+//}
 
 extension Image {
     func typeIconStyle() -> some View {
-        self
-            .resizable()
-            .scaledToFit()
-            .frame(width: 20, height: 20)
+        ZStack {
+            Circle()
+                .stroke(.black.opacity(0.6), lineWidth: 1.5)
+            
+            self
+                .resizable()
+                .scaledToFit()
+        }
+        .shadow(radius: 2)
+        .frame(width: 20, height: 20)
     }
 }

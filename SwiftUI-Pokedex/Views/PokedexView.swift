@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct PokedexView: View {
-    @StateObject private var pokemonViewModel = PokemonViewModel(
-        service: PokemonService()
-    )
+    @StateObject private var pokemonViewModel = PokemonViewModel()
     
     @State private var searchText = ""
     
@@ -23,7 +21,7 @@ struct PokedexView: View {
         pokemonViewModel.pokemonResults.isEmpty
     }
     
-    var filteredResults: [Result] {
+    var filteredResults: [PokemonResult] {
         searchText.isEmpty ? (
             pokemonViewModel.pokemonResults
         ) : (
@@ -40,11 +38,11 @@ struct PokedexView: View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(filteredResults, id: \.name) { result in
+                    ForEach(filteredResults, id: \.id) { result in
                         NavigationLink {
                             PokemonDetailView()
                         } label: {
-                            Text(result.name)
+                            PokemonCell(result: result)
                         }
                     }
                 }
@@ -59,8 +57,8 @@ struct PokedexView: View {
                 LoadingView(text: "Loading Pokémon...")
             }
         }
-        .task {
-            await pokemonViewModel.getPokemonResults()
+        .onAppear {
+            pokemonViewModel.fetchPokemonResults()
         }
     }
 }
