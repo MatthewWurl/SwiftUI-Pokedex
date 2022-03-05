@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B80071BB27D30D63001387B3 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = B80071BA27D30D63001387B3 /* Apollo */; };
 		B8485E3F27BF2A3D0065CC5E /* SwiftUI_PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8485E3E27BF2A3D0065CC5E /* SwiftUI_PokedexApp.swift */; };
 		B8485E4127BF2A3D0065CC5E /* PokedexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8485E4027BF2A3D0065CC5E /* PokedexView.swift */; };
 		B8485E4327BF2A3F0065CC5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8485E4227BF2A3F0065CC5E /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B80071BB27D30D63001387B3 /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +144,9 @@
 			dependencies = (
 			);
 			name = "SwiftUI-Pokedex";
+			packageProductDependencies = (
+				B80071BA27D30D63001387B3 /* Apollo */,
+			);
 			productName = "SwiftUI-Pokedex";
 			productReference = B8485E3B27BF2A3D0065CC5E /* SwiftUI-Pokedex.app */;
 			productType = "com.apple.product-type.application";
@@ -170,6 +175,9 @@
 				Base,
 			);
 			mainGroup = B8485E3227BF2A3D0065CC5E;
+			packageReferences = (
+				B80071B927D30D63001387B3 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = B8485E3C27BF2A3D0065CC5E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -413,6 +421,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B80071B927D30D63001387B3 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.51.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B80071BA27D30D63001387B3 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B80071B927D30D63001387B3 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B8485E3327BF2A3D0065CC5E /* Project object */;
 }
