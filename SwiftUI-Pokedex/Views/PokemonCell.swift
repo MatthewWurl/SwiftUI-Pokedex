@@ -52,12 +52,16 @@ struct PokemonCell: View {
     }
 }
 
-//struct PokemonCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PokemonCell(result: )
-//            .frame(width: 160, height: 90)
-//    }
-//}
+struct PokemonCell_Previews: PreviewProvider {
+    static let results: [PokemonResult] = Bundle.main.decode("pokemon.json")
+    
+    static var previews: some View {
+        PokemonCell(result: results[0])
+            .previewLayout(.sizeThatFits)
+            .frame(width: 160, height: 90)
+            .padding()
+    }
+}
 
 extension Image {
     func typeIconStyle() -> some View {
