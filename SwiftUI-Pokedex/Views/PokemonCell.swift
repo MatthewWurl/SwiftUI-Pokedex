@@ -17,7 +17,7 @@ struct PokemonCell: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(Color("\(result.types[0].type!.name.capitalized)"))
+                .foregroundColor(Color("\(result.types.first!.capitalized)"))
             
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
@@ -27,8 +27,8 @@ struct PokemonCell: View {
                         .lineLimit(1)
                     
                     HStack(spacing: 5) {
-                        ForEach(result.types, id: \.type!.name) { type in
-                            Image("Type_Icon_\(type.type!.name.capitalized)")
+                        ForEach(result.types, id: \.self) { type in
+                            Image("Type_Icon_\(type.capitalized)")
                                 .typeIconStyle()
                         }
                     }

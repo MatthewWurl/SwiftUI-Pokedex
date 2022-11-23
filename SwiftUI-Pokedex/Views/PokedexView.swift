@@ -43,21 +43,16 @@ struct PokedexView: View {
                         }
                     }
                 }
-//                .searchable(text: $searchText)
-                
-                .disableAutocorrection(true)
                 .padding(.horizontal, 10)
             }
             .navigationTitle("Pokédex")
         }
         .searchable(text: $searchText)
+        .autocorrectionDisabled(true)
         .overlay {
             if isLoading {
                 LoadingView(text: "Loading Pokémon...")
             }
-        }
-        .onAppear {
-            pokemonViewModel.fetchPokemonResults()
         }
     }
 }
