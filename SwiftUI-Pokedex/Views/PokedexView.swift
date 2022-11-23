@@ -22,16 +22,13 @@ struct PokedexView: View {
     }
     
     var filteredResults: [PokemonResult] {
-        searchText.isEmpty ? (
-            pokemonViewModel.pokemonResults
-        ) : (
-            pokemonViewModel.pokemonResults.filter { pokemon in
-                let lowercasedName = pokemon.name.lowercased()
-                let lowercasedSearch = searchText.lowercased()
-                
-                return lowercasedName.contains(lowercasedSearch)
+        if searchText.isEmpty {
+            return pokemonViewModel.pokemonResults
+        } else {
+            return pokemonViewModel.pokemonResults.filter { result in
+                result.name.localizedCaseInsensitiveContains(searchText)
             }
-        )
+        }
     }
     
     var body: some View {
@@ -46,12 +43,14 @@ struct PokedexView: View {
                         }
                     }
                 }
-                .searchable(text: $searchText)
+//                .searchable(text: $searchText)
+                
                 .disableAutocorrection(true)
                 .padding(.horizontal, 10)
             }
             .navigationTitle("Pokédex")
         }
+        .searchable(text: $searchText)
         .overlay {
             if isLoading {
                 LoadingView(text: "Loading Pokémon...")
