@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PokedexView: View {
+    @State private var isShowingSortDialog = false
     @StateObject private var pokemonViewModel = PokemonViewModel()
     @State private var searchText = ""
     
@@ -34,6 +35,9 @@ struct PokedexView: View {
     var body: some View {
         NavigationView {
             ScrollView {
+                Text("Showing \(filteredResults.count) results.")
+                    .font(.system(size: 14))
+                
                 LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(filteredResults, id: \.id) { result in
                         NavigationLink {
@@ -46,6 +50,15 @@ struct PokedexView: View {
                 .padding(.horizontal, 10)
             }
             .navigationTitle("Pokédex")
+            .toolbar {
+                sortButton
+            }
+            .confirmationDialog("Sort By", isPresented: $isShowingSortDialog) {
+                Button("ID") { }
+                Button("Name") { }
+            } message: {
+                Text("Sort By")
+            }
         }
         .searchable(text: $searchText)
         .autocorrectionDisabled(true)
@@ -53,6 +66,14 @@ struct PokedexView: View {
         .overlay {
             if isLoading {
                 LoadingView(text: "Loading Pokémon...")
+            }
+        }
+    }
+    
+    var sortButton: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Button("Sort") {
+                isShowingSortDialog = true
             }
         }
     }
