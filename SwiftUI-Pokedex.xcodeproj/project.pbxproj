@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B80064A42943DC94002AAD55 /* Image+TypeIconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80064A32943DC94002AAD55 /* Image+TypeIconStyle.swift */; };
 		B83369BB292DEE4800E84BD5 /* Bundle+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83369BA292DEE4800E84BD5 /* Bundle+Decode.swift */; };
 		B840AA09292DDCAF00279EB4 /* pokemon.json in Resources */ = {isa = PBXBuildFile; fileRef = B840AA08292DDCAF00279EB4 /* pokemon.json */; };
 		B8485E3F27BF2A3D0065CC5E /* SwiftUI_PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8485E3E27BF2A3D0065CC5E /* SwiftUI_PokedexApp.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B80064A32943DC94002AAD55 /* Image+TypeIconStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+TypeIconStyle.swift"; sourceTree = "<group>"; };
 		B83369BA292DEE4800E84BD5 /* Bundle+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decode.swift"; sourceTree = "<group>"; };
 		B840AA08292DDCAF00279EB4 /* pokemon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pokemon.json; sourceTree = "<group>"; };
 		B8485E3B27BF2A3D0065CC5E /* SwiftUI-Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-Pokedex.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				B83369BA292DEE4800E84BD5 /* Bundle+Decode.swift */,
+				B80064A32943DC94002AAD55 /* Image+TypeIconStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			files = (
 				B896E84E27C35C45000CCF57 /* PokemonCell.swift in Sources */,
 				B8485E4127BF2A3D0065CC5E /* PokedexView.swift in Sources */,
+				B80064A42943DC94002AAD55 /* Image+TypeIconStyle.swift in Sources */,
 				B896E8E427C73C61000CCF57 /* LoadingView.swift in Sources */,
 				B8485E7727C09B2F0065CC5E /* Pokemon.swift in Sources */,
 				B83369BB292DEE4800E84BD5 /* Bundle+Decode.swift in Sources */,

@@ -10,16 +10,12 @@ import SwiftUI
 struct PokemonCell: View {
     let result: PokemonResult
     
-    var imageUrl: URL {
-        URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(result.id).png")!
-    }
-    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(Color("\(result.types.first!.capitalized)"))
+                .foregroundColor(Color(result.colorName))
             
-            HStack {
+            HStack() {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(result.name.capitalized)
                         .font(.subheadline.bold())
@@ -27,8 +23,8 @@ struct PokemonCell: View {
                         .lineLimit(1)
                     
                     HStack(spacing: 5) {
-                        ForEach(result.types, id: \.self) { type in
-                            Image("Type_Icon_\(type.capitalized)")
+                        ForEach(result.typeIconNames, id: \.self) { typeIcon in
+                            Image(typeIcon)
                                 .typeIconStyle()
                         }
                     }
@@ -36,7 +32,7 @@ struct PokemonCell: View {
                 
                 Spacer()
                 
-                AsyncImage(url: imageUrl) { image in
+                AsyncImage(url: result.imageUrl) { image in
                     image
                         .resizable()
                         .scaledToFit()
@@ -60,20 +56,5 @@ struct PokemonCell_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
             .frame(width: 160, height: 90)
             .padding()
-    }
-}
-
-extension Image {
-    func typeIconStyle() -> some View {
-        ZStack {
-            Circle()
-                .stroke(.black.opacity(0.6), lineWidth: 1.5)
-            
-            self
-                .resizable()
-                .scaledToFit()
-        }
-        .shadow(radius: 2)
-        .frame(width: 20, height: 20)
     }
 }
