@@ -5,6 +5,7 @@
 //  Created by Matt X on 2/21/22.
 //
 
+import Kingfisher
 import SwiftUI
 
 struct PokemonCell: View {
@@ -32,15 +33,9 @@ struct PokemonCell: View {
                 
                 Spacer()
                 
-                AsyncImage(url: result.imageUrl) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 50, height: 50)
-                } placeholder: {
-                    ProgressView()
-                        .frame(width: 50, height: 50)
-                }
+                KFImage(result.imageUrl)
+                    .resizable()
+                    .frame(width: 50, height: 50)
             }
             .padding(.vertical, 20)
             .padding(.horizontal, 10)
