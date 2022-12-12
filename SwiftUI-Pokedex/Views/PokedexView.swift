@@ -9,37 +9,21 @@ import SwiftUI
 
 struct PokedexView: View {
     @State private var isShowingSortDialog = false
-    @StateObject private var pokemonViewModel = PokemonViewModel()
-    @State private var searchText = ""
+    @StateObject private var pokemonVM = PokemonViewModel()
     
     private let columns = [
         GridItem(.flexible(), spacing: 10),
         GridItem(.flexible(), spacing: 10)
     ]
     
-    private var filteredResults: [PokemonResult] {
-        switch searchText.isEmpty {
-        case true:
-            return pokemonViewModel.pokemonResults
-        case false:
-            return pokemonViewModel.pokemonResults.filter { result in
-                result.name.localizedCaseInsensitiveContains(searchText)
-            }
-        }
-    }
-    
-    private var isLoading: Bool {
-        return pokemonViewModel.pokemonResults.isEmpty
-    }
-    
     var body: some View {
         NavigationView {
             ScrollView {
-                Text("Showing \(filteredResults.count) results.")
+                Text(pokemonVM.resultsCountString)
                     .font(.system(size: 14))
                 
                 LazyVGrid(columns: columns, spacing: 10) {
-                    ForEach(filteredResults, id: \.id) { result in
+                    ForEach(pokemonVM.filteredResults) { result in
                         NavigationLink {
                             PokemonDetailView()
                         } label: {
@@ -60,11 +44,11 @@ struct PokedexView: View {
                 Text("Sort By")
             }
         }
-        .searchable(text: $searchText)
+        .searchable(text: $pokemonVM.searchText)
         .autocorrectionDisabled(true)
         .textInputAutocapitalization(.never)
         .overlay {
-            if isLoading {
+            if pokemonVM.isLoading {
                 LoadingView(text: "Loading Pokémon...")
             }
         }
