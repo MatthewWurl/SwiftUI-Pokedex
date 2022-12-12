@@ -5,6 +5,12 @@ A Pokédex app created with the SwiftUI framework that utilizes data from [PokeA
 
 ## Screenshots 📱
 
+### Design Mockups 🎨
+
+<div>
+  <img src="Screenshots/Mockup.png" width="500">
+</div>
+
 ### Light Mode ☀️
 
 <div>
