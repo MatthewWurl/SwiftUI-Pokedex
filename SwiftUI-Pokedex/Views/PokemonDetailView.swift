@@ -10,11 +10,15 @@ import SwiftUI
 struct PokemonDetailView: View {
     var body: some View {
         Text("Pokemon Detail View")
+            .navigationTitle("Detail")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct PokemonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDetailView()
+        NavigationView {
+            PokemonDetailView()
+        }
     }
 }

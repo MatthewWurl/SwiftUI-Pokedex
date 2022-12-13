@@ -22,7 +22,7 @@ struct PokemonCell: View {
                         .font(.subheadline.bold())
                         .foregroundColor(.white)
                         .lineLimit(1)
-//                        .minimumScaleFactor(0.6)
+                        .minimumScaleFactor(0.6)
                     
                     HStack(spacing: 5) {
                         ForEach(result.typeIconNames, id: \.self) { typeIcon in
