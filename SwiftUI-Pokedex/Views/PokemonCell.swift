@@ -16,12 +16,13 @@ struct PokemonCell: View {
             RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(Color(result.colorName))
             
-            HStack() {
+            HStack {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(result.name.capitalized)
                         .font(.subheadline.bold())
                         .foregroundColor(.white)
                         .lineLimit(1)
+//                        .minimumScaleFactor(0.6)
                     
                     HStack(spacing: 5) {
                         ForEach(result.typeIconNames, id: \.self) { typeIcon in
