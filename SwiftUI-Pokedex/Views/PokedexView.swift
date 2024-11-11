@@ -54,7 +54,7 @@ struct PokedexView: View {
         }
     }
     
-    var sortButton: some ToolbarContent {
+    private var sortButton: some ToolbarContent {
         ToolbarItem(placement: .navigationBarTrailing) {
             Button("Sort") {
                 isShowingSortDialog = true
