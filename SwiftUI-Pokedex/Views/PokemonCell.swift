@@ -9,8 +9,10 @@ import Kingfisher
 import SwiftUI
 
 struct PokemonCell: View {
+    // MARK: - PROPERTIES
     let result: PokemonResult
     
+    // MARK: - BODY
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 10) {
@@ -43,13 +45,11 @@ struct PokemonCell: View {
     }
 }
 
-struct PokemonCell_Previews: PreviewProvider {
-    static let results: [PokemonResult] = Bundle.main.decode("pokemon.json")
+// MARK: - PREVIEW
+#Preview(traits: .sizeThatFitsLayout) {
+    let results: [PokemonResult] = Bundle.main.decode("pokemon.json")
     
-    static var previews: some View {
-        PokemonCell(result: results[0])
-            .previewLayout(.sizeThatFits)
-            .frame(width: 160, height: 90)
-            .padding()
-    }
+    PokemonCell(result: results[5])
+        .frame(width: 160, height: 90)
+        .padding()
 }

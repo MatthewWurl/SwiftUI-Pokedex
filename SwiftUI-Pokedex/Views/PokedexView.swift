@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PokedexView: View {
+    // MARK: - PROPERTIES
     @State private var isShowingSortDialog = false
     @StateObject private var pokemonVM = PokemonViewModel()
     
@@ -16,6 +17,7 @@ struct PokedexView: View {
         GridItem(.flexible(), spacing: 10)
     ]
     
+    // MARK: - BODY
     var body: some View {
         NavigationView {
             ScrollView {
@@ -68,8 +70,7 @@ struct PokedexView: View {
     }
 }
 
-struct PokedexView_Previews: PreviewProvider {
-    static var previews: some View {
-        PokedexView()
-    }
+// MARK: - PREVIEW
+#Preview {
+    PokedexView()
 }

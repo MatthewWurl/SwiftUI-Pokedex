@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PokemonDetailView: View {
+    // MARK: - PROPERTIES
+    
+    // MARK: - BODY
     var body: some View {
         Text("Pokemon Detail View")
             .navigationTitle("Detail")
@@ -15,10 +18,9 @@ struct PokemonDetailView: View {
     }
 }
 
-struct PokemonDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            PokemonDetailView()
-        }
+// MARK: - PREVIEW
+#Preview {
+    NavigationView {
+        PokemonDetailView()
     }
 }

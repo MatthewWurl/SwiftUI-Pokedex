@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct LoadingView: View {
+    // MARK: - PROPERTIES
     let text: String
     
+    // MARK: - BODY
     var body: some View {
         VStack(spacing: 10) {
             ProgressView()
@@ -18,10 +20,8 @@ struct LoadingView: View {
     }
 }
 
-struct LoadingView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoadingView(text: "Loading...")
-            .previewLayout(.sizeThatFits)
-            .padding()
-    }
+// MARK: - PREVIEW
+#Preview(traits: .sizeThatFitsLayout) {
+    LoadingView(text: "Loading...")
+        .padding()
 }
