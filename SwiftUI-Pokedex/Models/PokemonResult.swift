@@ -12,21 +12,11 @@ struct PokemonResult: Codable, Identifiable {
     let name: String
     let types: [String]
     
-    var colorName: String {
-        get {
-            types.first!.capitalized
-        }
-    }
+    var colorName: String { types.first!.capitalized }
     
     var imageUrl: URL {
-        get {
-            URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(id).png")!
-        }
+        URL(string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(id).png")!
     }
     
-    var typeIconNames: [String] {
-        get {
-            types.map { "Type_Icon_\($0.capitalized)" }
-        }
-    }
+    var typeIconNames: [String] { types.map { "Type_Icon_\($0.capitalized)" } }
 }

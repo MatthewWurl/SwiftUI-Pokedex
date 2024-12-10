@@ -43,6 +43,11 @@ struct PokedexView: View {
             } message: {
                 Text("Sort By")
             }
+            .overlay {
+                if pokemonVM.shouldShowContentUnavailable {
+                    ContentUnavailableView.search(text: pokemonVM.searchText)
+                }
+            }
         }
         .searchable(text: $pokemonVM.searchText)
         .autocorrectionDisabled(true)

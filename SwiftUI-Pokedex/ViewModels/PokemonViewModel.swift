@@ -8,33 +8,29 @@
 import Foundation
 
 final class PokemonViewModel: ObservableObject {
-    @Published var searchText: String = ""
+    @Published var searchText = ""
     
     private(set) var pokemonResults: [PokemonResult] = Bundle.main.decode("pokemon.json")
     
     var filteredResults: [PokemonResult] {
-        get {
-            switch searchText.isEmpty {
-            case true:
-                return pokemonResults
-            case false:
-                return pokemonResults.filter { result in
-                    result.name.localizedCaseInsensitiveContains(searchText)
-                }
+        switch searchText.isEmpty {
+        case true:
+            return pokemonResults
+        case false:
+            return pokemonResults.filter { result in
+                result.name.localizedCaseInsensitiveContains(searchText)
             }
         }
     }
     
-    var isLoading: Bool {
-        get {
-            pokemonResults.isEmpty
-        }
-    }
+    var isLoading: Bool { pokemonResults.isEmpty }
     
     var resultsCountString: String {
-        get {
-            let count = filteredResults.count
-            return "Showing \(count) \(count == 1 ? "result" : "results")."
-        }
+        let count = filteredResults.count
+        return "Showing \(count) \(count == 1 ? "result" : "results")."
+    }
+    
+    var shouldShowContentUnavailable: Bool {
+        !searchText.isEmpty && filteredResults.isEmpty
     }
 }
