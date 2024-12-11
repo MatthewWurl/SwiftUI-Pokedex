@@ -15,15 +15,18 @@ A Pokédex app created with the SwiftUI framework that utilizes data from [PokeA
 
 <div>
   <img src="Screenshots/Light/Home.png" width="250">
-  <img src="Screenshots/Light/Search.png" width="250">
+  <img src="Screenshots/Light/Search-Populated.png" width="250">
+  <img src="Screenshots/Light/Search-Empty.png" width="250">
 </div>
 
 ### Dark Mode 🌙
 
 <div>
   <img src="Screenshots/Dark/Home.png" width="250">
-  <img src="Screenshots/Dark/Search.png" width="250">
+  <img src="Screenshots/Dark/Search-Populated.png" width="250">
+  <img src="Screenshots/Dark/Search-Empty.png" width="250">
 </div>
+
 
 ## To-Do List 📝
 ### High Priority
@@ -31,8 +34,8 @@ A Pokédex app created with the SwiftUI framework that utilizes data from [PokeA
 - [ ] Fetch Pokemon detail information from API endpoint
 ### Medium Priority
 - [ ] Add a filter option for the home view
-- [ ] Add a sort by option (Sort by ID, name, height, weight)
-- [ ] Add a settings view (i.e. to change display style, measurement system, etc.)
+- [ ] Add functionality to sort by option (Sort by ID, name, height, weight)
+- [ ] Update settings view (i.e. to change display style, measurement system, etc.)
 ### Low Priority
 - [ ] Add ability to favorite Pokemon and have them displayed first
 
@@ -45,11 +48,8 @@ The data provided for all Pokemon results only includes a `name` and `url` prope
   {
     "id": 1,
     "name": "bulbasaur",
-    "types": [
-      "grass",
-      "poison"
-    ]
-  },
+    "types": ["grass", "poison"]
+  }
 ]
 ```
 
