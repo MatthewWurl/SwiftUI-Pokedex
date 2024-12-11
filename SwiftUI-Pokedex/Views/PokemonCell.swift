@@ -34,6 +34,7 @@ struct PokemonCell: View {
             
             KFImage(result.imageUrl)
                 .resizable()
+                .scaledToFit()
                 .frame(width: 50, height: 50)
         }
         .padding(.vertical, 20)
@@ -47,9 +48,7 @@ struct PokemonCell: View {
 
 // MARK: - PREVIEW
 #Preview(traits: .sizeThatFitsLayout) {
-    let results: [PokemonResult] = Bundle.main.decode("pokemon.json")
-    
-    PokemonCell(result: results[5])
+    PokemonCell(result: PokemonResult.allResults[5])
         .frame(width: 160, height: 90)
         .padding()
 }

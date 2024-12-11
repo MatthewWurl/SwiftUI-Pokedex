@@ -22,7 +22,7 @@ struct PokedexView: View {
         NavigationView {
             ScrollView {
                 if !pokemonVM.shouldShowContentUnavailable {
-                    Text(pokemonVM.resultsCountString)
+                    Text(pokemonVM.pokemonCountString)
                         .font(.system(size: 14))
                 }
                 
@@ -47,18 +47,13 @@ struct PokedexView: View {
             } message: {
                 Text("Sort By")
             }
-            .overlay {
-                if pokemonVM.shouldShowContentUnavailable {
-                    ContentUnavailableView.search(text: pokemonVM.searchText)
-                }
-            }
         }
         .searchable(text: $pokemonVM.searchText)
         .autocorrectionDisabled(true)
         .textInputAutocapitalization(.never)
         .overlay {
-            if pokemonVM.isLoading {
-                LoadingView(text: "Loading Pokémon...")
+            if pokemonVM.shouldShowContentUnavailable {
+                ContentUnavailableView.search(text: pokemonVM.searchText)
             }
         }
     }

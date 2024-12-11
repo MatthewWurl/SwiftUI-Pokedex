@@ -8,6 +8,8 @@
 import Foundation
 
 struct PokemonResult: Codable, Identifiable {
+    static let allResults: [PokemonResult] = Bundle.main.decode("pokemon.json")
+    
     let id: Int
     let name: String
     let types: [String]

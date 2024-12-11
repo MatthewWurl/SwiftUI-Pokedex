@@ -10,22 +10,18 @@ import Foundation
 final class PokemonViewModel: ObservableObject {
     @Published var searchText = ""
     
-    private(set) var pokemonResults: [PokemonResult] = Bundle.main.decode("pokemon.json")
-    
     var filteredResults: [PokemonResult] {
         switch searchText.isEmpty {
         case true:
-            return pokemonResults
+            return PokemonResult.allResults
         case false:
-            return pokemonResults.filter { result in
+            return PokemonResult.allResults.filter { result in
                 result.name.localizedCaseInsensitiveContains(searchText)
             }
         }
     }
     
-    var isLoading: Bool { pokemonResults.isEmpty }
-    
-    var resultsCountString: String {
+    var pokemonCountString: String {
         let count = filteredResults.count
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
