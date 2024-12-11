@@ -21,8 +21,10 @@ struct PokedexView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                Text(pokemonVM.resultsCountString)
-                    .font(.system(size: 14))
+                if !pokemonVM.shouldShowContentUnavailable {
+                    Text(pokemonVM.resultsCountString)
+                        .font(.system(size: 14))
+                }
                 
                 LazyVGrid(columns: columns, spacing: 10) {
                     ForEach(pokemonVM.filteredResults) { result in

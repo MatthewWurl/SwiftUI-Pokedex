@@ -27,7 +27,11 @@ final class PokemonViewModel: ObservableObject {
     
     var resultsCountString: String {
         let count = filteredResults.count
-        return "Showing \(count) \(count == 1 ? "result" : "results")."
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let formattedCount = formatter.string(from: NSNumber(value: count)) ?? String(count)
+        
+        return "Displaying \(formattedCount) Pokémon."
     }
     
     var shouldShowContentUnavailable: Bool {
